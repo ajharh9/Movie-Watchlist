@@ -74,7 +74,7 @@ function getSearchResults() {
 
 function getMovieDetail(imdbID) {
   return new Promise((resolve, reject) => {
-    fetch(`http://www.omdbapi.com/?plot=short&i=${imdbID}&apikey=cfae198d`)
+    fetch(`https://www.omdbapi.com/?plot=short&i=${imdbID}&apikey=cfae198d`)
       .then((res) => res.json())
       .then((res) => resolve(res))
       .catch((err) => reject(err));
@@ -87,7 +87,7 @@ function getMovieList(searchKeyWord) {
   let movieHTML = "";
   moviesList.innerHTML = "";
 
-  fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=${searchKeyWord}`)
+  fetch(`https://www.omdbapi.com/?apikey=${apikey}&s=${searchKeyWord}`)
     .then((res) => res.json())
     .then((data) => {
       if (data.Response == "False") {
@@ -102,7 +102,7 @@ function getMovieList(searchKeyWord) {
       let searchMovieList = movieList.map((ele) => ele.imdbID);
       for (let i = 0; i < movieList.length; i++) {
         fetch(
-          `http://www.omdbapi.com/?plot=short&i=${movieList[i].imdbID}&apikey=cfae198d`
+          `https://www.omdbapi.com/?plot=short&i=${movieList[i].imdbID}&apikey=cfae198d`
         )
           .then((res) => res.json())
           .then((movieDetail) => {
