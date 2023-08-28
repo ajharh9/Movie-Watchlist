@@ -37,6 +37,9 @@ async function getWatchlistMovieList() {
       movieHTML += getMovieHtml(movieDetail, 'sub');
     }
     WatchlistMovies.innerHTML += movieHTML;
+  }else{
+    emptyPlaceHolderEl.classList.remove("hide");
+    mainEl.classList.add("center-ele");
   }
 }
 
