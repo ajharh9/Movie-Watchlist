@@ -27,10 +27,10 @@ function removeItemFromoWatchlist(imdbID) {
 
 async function getWatchlistMovieList() {
   WatchlistMovies.innerHTML = ""
-  if(myWatchlistArr){
+  if(myWatchlistArr.length != 0){
     emptyPlaceHolderEl.classList.add("hide");
+    mainEl.classList.remove("center-ele");
   }
-  mainEl.classList.remove("center-ele");
   let movieHTML = "";
   for (let i = 0; i < myWatchlistArr.length; i++) {
     // data.Search.forEach((movie) => {
