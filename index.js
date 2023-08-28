@@ -114,7 +114,7 @@ function getMovieList(searchKeyWord) {
               document.addEventListener("click", function (e) {
                 if (e.target.id == `${searchMovieList[i]}-add`) {
                   let imdbID = e.target.id.slice(0, -4)
-                  let icon = document.getElementByID(`${imdbID}-add-icon`)
+                  let icon = document.getElementById(`${imdbID}-add-icon`)
                   icon.classList.remove('fa-plus')
                   icon.classList.add('fa-check')
                   addItemToWatchlist(imdbID);
