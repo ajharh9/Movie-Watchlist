@@ -25,6 +25,7 @@ button {
 
 a{
     text-decoration: none;
+    color:grey;
     /* font-size: 0.875rem; */
     height: auto;
     margin: auto 0;
