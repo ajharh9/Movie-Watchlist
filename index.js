@@ -46,7 +46,7 @@ function getMovieHtml(movieDetail, operation) {
                           id="${movieDetail.imdbID}-${operation}" 
                           class="add-watchlist-btn "
                         >
-                          Watchlist
+                          ${operation == "add" ? "Watchlist" : "Remove"}
                           <i 
                             class="blinking ${
                               operation == "add" ? "fa-solid fa-plus" : ""
