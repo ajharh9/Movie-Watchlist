@@ -30,14 +30,14 @@ async function getWatchlistMovieList() {
   if(myWatchlistArr.length != 0){
     emptyPlaceHolderEl.classList.add("hide");
     mainEl.classList.remove("center-ele");
+    let movieHTML = "";
+    for (let i = 0; i < myWatchlistArr.length; i++) {
+      // data.Search.forEach((movie) => {
+      const movieDetail = await getMovieDetail(myWatchlistArr[i]);
+      movieHTML += getMovieHtml(movieDetail, 'sub');
+    }
+    WatchlistMovies.innerHTML += movieHTML;
   }
-  let movieHTML = "";
-  for (let i = 0; i < myWatchlistArr.length; i++) {
-    // data.Search.forEach((movie) => {
-    const movieDetail = await getMovieDetail(myWatchlistArr[i]);
-    movieHTML += getMovieHtml(movieDetail, 'sub');
-  }
-  WatchlistMovies.innerHTML += movieHTML;
 }
 
 function reloadPage() {
