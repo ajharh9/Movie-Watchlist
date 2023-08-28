@@ -17,12 +17,6 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// searchInputEl.addEventListener("keydown", function (e) {
-//   if (e.key === "Enter") {
-//     getSearchResults();
-//   }
-// });
-
 function addItemToWatchlist(imdbID) {
   let jsonData = sessionStorage.getItem("myArr");
   myWatchlistArr = JSON.parse(jsonData);
@@ -80,7 +74,7 @@ function getSearchResults() {
 
 function getMovieDetail(imdbID) {
   return new Promise((resolve, reject) => {
-    fetch(`https://www.omdbapi.com/?plot=short&i=${imdbID}&apikey=cfae198d`)
+    fetch(`http://www.omdbapi.com/?plot=short&i=${imdbID}&apikey=cfae198d`)
       .then((res) => res.json())
       .then((res) => resolve(res))
       .catch((err) => reject(err));
@@ -108,7 +102,7 @@ function getMovieList(searchKeyWord) {
       let searchMovieList = movieList.map((ele) => ele.imdbID);
       for (let i = 0; i < movieList.length; i++) {
         fetch(
-          `https://www.omdbapi.com/?plot=short&i=${movieList[i].imdbID}&apikey=cfae198d`
+          `http://www.omdbapi.com/?plot=short&i=${movieList[i].imdbID}&apikey=cfae198d`
         )
           .then((res) => res.json())
           .then((movieDetail) => {
@@ -134,32 +128,5 @@ function getMovieList(searchKeyWord) {
       searchInputEl.placeholder = "Search for a movie";
     });
 }
-// async function getMovieList(searchKeyWord) {
-//   emptyPlaceHolderEl.classList.add("hide");
-//   const apikey = "cfae198d";
-//   let res = await fetch(
-//     `http://www.omdbapi.com/?apikey=${apikey}&s=${searchKeyWord}`
-//   );
-//   const data = await res.json();
-//     moviesList.innerHTML = "";
-//   if (data.Response === "False") {
-//     moviesList.innerHTML = "";
-//     mainEl.classList.add("center-ele");
-//     emptySearchBarMsg.classList.remove("hide");
-//   } else {
-//     mainEl.classList.remove("center-ele");
-//     emptySearchBarMsg.classList.add("hide");
-//     let movieHTML = "";
-//     let movieList = data.Search;
-//     for (let i = 0; i < movieList.length; i++) {
-//       // data.Search.forEach((movie) => {
-//       const movieDetail = await getMovieDetail(movieList[i].imdbID);
-//       movieHTML += getMovieHtml(movieDetail);
-//       getMovieHtml(movieDetail);
-//     }
-//     moviesList.innerHTML += movieHTML;
-//   }
-//   searchInputEl.placeholder = "Search for a movie";
-// }
 
 export {getMovieHtml, getMovieDetail };
