@@ -48,6 +48,7 @@ function getMovieHtml(movieDetail, operation) {
                         >
                           ${operation == "add" ? "Watchlist" : "Remove"}
                           <i 
+                            id="${movieDetail.imdbID}-${operation}-icon"
                             class="blinking ${
                               operation == "add" ? "fa-solid fa-plus" : ""
                             } plus"
@@ -112,7 +113,11 @@ function getMovieList(searchKeyWord) {
           .then(() => {
               document.addEventListener("click", function (e) {
                 if (e.target.id == `${searchMovieList[i]}-add`) {
-                  addItemToWatchlist(e.target.id.slice(0, -4));
+                  let imdbID = e.target.id.slice(0, -4)
+                  let icon = document.getElementByID(`${imdbID}-add-icon`)
+                  icon.classList.remove('fa-plus)
+                  icon.classList.add('fa-check)
+                  addItemToWatchlist(imdbID);
                 } 
               });
           })
